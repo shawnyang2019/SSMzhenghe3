@@ -17,3 +17,8 @@ mbg.xml
 *.log
 .springBeans
 /out/
+out/
+pom.xml
+src/
+web/
+src/test/
