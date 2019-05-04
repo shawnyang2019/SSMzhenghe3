@@ -86,32 +86,41 @@
         <div class="col-md-6">
             <nav aria-label="Page navigation">
                 <ul class="pagination">
+                    <%--实现首页的跳转功能--%>
                     <li>
-                        <a href f="#">首页</a>
+                        <a href="${APP_PATH}/emps?pn=1">首页</a>
                     </li>
-                    <li>
-                        <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
+                    <%--实现如果有上一页就显示上一页功能，否则不显示上一页--%>
+                    <c:if test="${pageInfo.hasPreviousPage}">
+                        <li>
+                            <a href="${APP_PATH}/emps?pn=${pageInfo.pageNum-1}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
+                    <%--实现遍历导航页功能--%>
                     <c:forEach items="${pageInfo.navigatepageNums}" var="page_Num">
+                        <%--实现选定页选定时跳转和变色--%>
                         <c:if test="${page_Num==pageInfo.pageNum}">
                             <li class="active"><a href="#">${page_Num}</a></li>
                         </c:if>
+                        <%--实现非选定页点击时的跳转--%>
                         <c:if test="${page_Num!=pageInfo.pageNum}">
                             <li><a href="${APP_PATH}/emps?pn=${page_Num}">${page_Num}</a></li>
                         </c:if>
-
                     </c:forEach>
-
-
+                    <%--实现如果有下一页就显示下一页功能，否则不显示下一页--%>
+                    <c:if test="${pageInfo.hasNextPage}">
+                        <%--实现点击下一页的跳转功能--%>
+                        <li>
+                            <a href="${APP_PATH}/emps?pn=${pageInfo.pageNum+1}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
+                        <%--实现末页的点击跳转功能--%>
                     <li>
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href f="#">末页</a>
+                        <a href="${APP_PATH}/emps?pn=${pageInfo.pages}">末页</a>
                     </li>
                 </ul>
             </nav>
