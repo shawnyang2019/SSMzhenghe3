@@ -1,7 +1,8 @@
 package com.shawnyanglearning.test;
 
-import java.util.UUID;
-
+import com.shawnyanglearning.bean.Employee;
+import com.shawnyanglearning.dao.DepartmentMapper;
+import com.shawnyanglearning.dao.EmployeeMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.shawnyanglearning.bean.Employee;
-import com.shawnyanglearning.dao.DepartmentMapper;
-import com.shawnyanglearning.dao.EmployeeMapper;
+import java.util.UUID;
 
 /**
  * 试dao层的工作 推荐：Spring的项目就可以使用Spring的单元测试，可以自动注入我们需要的组件 1 导入SpringTest模块
