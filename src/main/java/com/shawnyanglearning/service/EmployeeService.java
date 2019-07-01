@@ -16,7 +16,7 @@ public class EmployeeService {
 
 	/**
 	 * 查询所有员工（分页查询）
-	 * 
+	 * 查询的是所有的数据，没有其他的查询条件，所有入参是null
 	 * @return
 	 */
 

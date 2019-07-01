@@ -19,7 +19,7 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.List;
 
 /**
- * 使用Spring测试模块提供的测试请求功能，测试CRUD请求的正确性
+ * 使用Spring-Test测试模块提供的测试请求功能，测试CRUD请求的正确性
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -34,8 +34,6 @@ public class MVCtest {
 	@Before
      public void initMockMvc(){
          mockMvc=MockMvcBuilders.webAppContextSetup(context).build();
-
-
      }
 
      @Test

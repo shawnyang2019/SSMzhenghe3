@@ -14,6 +14,7 @@
 
     <!--=================数据源引入的配置，对应于数据源properties文件===========================-->
     <context:property-placeholder location="classpath:jdbc.properties"/>
+
     <bean id="pooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <!--数据库属性-->
         <property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
@@ -35,7 +36,8 @@
         <property name="mapperLocations" value="classpath:mapper/*.xml"></property>
     </bean>
 
-    <!--配置扫描器，扫描dao层下面的所有文件，将mybatis接口的实现加入到ioc容器中,-->
+    <!--配置扫描器，扫描dao层下面的所有文件，将mybatis接口的实现加入到ioc容器中,下面的两种写法都行-->
+    <!--<mybatis-spring:scan base-package=""com.shawnyanglearning.dao""/>-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--扫描所有dao接口的实现，加入到IOC容器中-->
         <property name="basePackage" value="com.shawnyanglearning.dao"></property>
@@ -48,14 +50,13 @@
     </bean>
 
     <!--====================事物控制的配置========================-->
+    <!--1 开启基于注解的事务；2 使用xml配置事务（主要的是使用配置式-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <!--指定需要控制住的数据源-->
         <property name="dataSource" ref="pooledDataSource"></property>
     </bean>
-
-    <!--1 开启基于注解的事物；2 使用xml配置形式的事物（主要的是使用配置式-->
     <aop:config>
-        <!--切入点表达式-->
+        <!--切入点表达式 * com.shawnyanglearning.service..*(..) 表示需要切入的是service下面的一层或多层中的所有类的所有方法-->
         <aop:pointcut id="txPoint" expression="execution(* com.shawnyanglearning.service..*(..))"></aop:pointcut>
         <!--配置事物增强-->
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPoint"></aop:advisor>

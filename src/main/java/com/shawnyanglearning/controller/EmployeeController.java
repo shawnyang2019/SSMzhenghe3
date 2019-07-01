@@ -29,9 +29,9 @@ public class EmployeeController {
 	 * @param pn
 	 * @return
 	 */
-	@RequestMapping("emps")
+//	@RequestMapping("emps")
 	// @ResponseBody 用来把返回回来的数据变成字符串，需要导入jackson 包
-	@ResponseBody
+//	@ResponseBody
 	public Msg getEmpsWithJson(@RequestParam(value = "pn", defaultValue = "1") Integer pn) {
 		// 这不是一个分页查询
 		// 引入PageHelper分页插件
@@ -50,7 +50,7 @@ public class EmployeeController {
 	 * 
 	 * @return
 	 */
-	// @RequestMapping("emps")
+	 @RequestMapping("emps")
 	public String getEmps(@RequestParam(value = "pn", defaultValue = "1") Integer pn, Model model) {
 		// 这不是一个分页查询
 		// 引入PageHelper分页插件

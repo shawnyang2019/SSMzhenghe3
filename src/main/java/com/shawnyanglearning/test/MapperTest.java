@@ -1,5 +1,6 @@
 package com.shawnyanglearning.test;
 
+import com.shawnyanglearning.bean.Department;
 import com.shawnyanglearning.bean.Employee;
 import com.shawnyanglearning.dao.DepartmentMapper;
 import com.shawnyanglearning.dao.EmployeeMapper;
@@ -38,25 +39,25 @@ public class MapperTest {
 		// // 2、从容器中获取mapper
 		// applicationContext.getBean(DepartmentMapper.class);
 		System.out.println(departmentMapper);
-		// // 1、插入几个部门
-		// departmentMapper.insertSelective(new Department(null, "开发部"));
-		// departmentMapper.insertSelective(new Department(null, "测试部"));
+		 // 1、插入几个部门
+//		 departmentMapper.insertSelective(new Department(null, "开发部"));
+//		 departmentMapper.insertSelective(new Department(null, "测试部"));
 
 		// 2 生成员工数据，测试员工插入
-		// employeeMapper.insertSelective(new Employee(null, "Jerry", "m",
-		// "Jerry@163.com", 20));
-		// employeeMapper.insertSelective(new Employee(null, "Jerry",
-		// "M","Jerry@atguigu.com",18));
+//		 employeeMapper.insertSelective(new Employee(null, "Jerry", "m",
+//		 "Jerry@163.com", 1));
+//		 employeeMapper.insertSelective(new Employee(null, "Jerry",
+//		 "M","Jerry@atguigu.com",2));
 
-		// 3、批量插入多个员工；批量，使用可以执行批量操作的sqlSession；
-		// for(){
-		// employeeMapper.insertSelective(new Employee(null, "Jerry", "m",
-		// "Jerry@163.com", 20));
-		// }
+		// 3、批量插入多个员工；批量，使用可以执行批量操作的sqlSession；需要在spring容器中配置一个可以执行批量的sqlSession
+//		 for(){
+//		 employeeMapper.insertSelective(new Employee(null, "Jerry", "m",
+//		 "Jerry@163.com", 20));
+//		 }
 		EmployeeMapper mapper=sqlSession.getMapper(EmployeeMapper.class);
 		for(int i=0;i<1000;i++){
 			String uid=UUID.randomUUID().toString().substring(0,5)+i;
-			employeeMapper.insertSelective(new Employee(null, uid, "m",uid+"@163.com", 21));
+			employeeMapper.insertSelective(new Employee(null, uid, "m",uid+"@163.com", 1));
 		}
 	}
 
